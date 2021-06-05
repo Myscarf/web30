@@ -22,7 +22,7 @@
                             <a class="post__item" href="{{route('post_by_character', $char->key)}}">{{$char->name}}</a>
                         @endforeach
                     </div>
-                    <span class="post__text"><b>Дата выхода :</b></span> <span>{{date('d-m-Y', strtotime($post->created_at))}}</span><br>
+                    <span class="post__text"><b>Дата выхода :</b></span> <span>{{date('d-m-Y', strtotime($post->released))}}</span><br>
                     <span class="post__text"><b>Краткий обзор :</b></span> <span class="post__synopsis">{{$post->synopsis}}</span><br>
                 </div>
             </div>

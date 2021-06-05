@@ -18,12 +18,13 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('penciler_id');
             $table->text('cover');
             $table->text('series');
-            $table->text('issue');
+            $table->integer('issue');
             $table->text('story_arc');
             $table->text('story_arc-part');
             $table->text('event');
-            $table->timestamps();
+            $table->date('released');
             $table->text('synopsis');
+            $table->timestamps();
         });
     }
 
