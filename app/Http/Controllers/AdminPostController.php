@@ -7,6 +7,9 @@ use App\Penciler;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 
 class AdminPostController extends Controller
 {
@@ -58,6 +61,12 @@ class AdminPostController extends Controller
                 $post->character()->getRelated();
 
 
+                //Логирование создания поста
+                $log = new Logger('log_add');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/.../../../Logs/new_posts_log.log', Logger::INFO));
+                $log->info('Пользователь ' . Auth::user()->name . ' добавил описание выпуска ' . $post->series . ' # ' . $post->issue);
+
+
                 return redirect()->route('single_post', $post->id);
             }
         } else
@@ -68,6 +77,7 @@ class AdminPostController extends Controller
         if (Auth::check()){
             $post = Post::where('id', '=', $id)->first();
             $pencilers = Penciler::all();
+
 
             return view('Admin.edit_post',
                 [
@@ -115,6 +125,13 @@ class AdminPostController extends Controller
                 $post->character()->getRelated();
 */
 
+
+                //Логирование редактирования поста
+                $log = new Logger('log_add');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/.../../../Logs/new_posts_log.log', Logger::INFO));
+                $log->info('Пользователь ' . Auth::user()->name . ' редактировал описание выпуска ' . $post->series . ' # ' . $post->issue);
+
+
                 return redirect()->route('admin_post_get');
             }
         } else
@@ -125,6 +142,12 @@ class AdminPostController extends Controller
         if ($request->method()=='DELETE'){
             $post = Post::find($request->input('id'));
             $post->delete();
+
+            //Логирование удаления поста
+            $log = new Logger('log_add');
+            $log->pushHandler(new StreamHandler(__DIR__ . '/.../../../Logs/new_posts_log.log', Logger::INFO));
+            $log->info('Пользователь ' . Auth::user()->name . ' удалил выпуск из списка ' . $post->series . ' # ' . $post->issue);
+
             return back();
         }else{
             return view('Admin.admin_post', ['posts'=>Post::orderBy('updated_at', 'DESC')->get()]);
