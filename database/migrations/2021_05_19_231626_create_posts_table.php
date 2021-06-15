@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->text('event');
             $table->date('released');
             $table->text('synopsis');
+            $table->integer('view')->default(0);
             $table->timestamps();
         });
     }

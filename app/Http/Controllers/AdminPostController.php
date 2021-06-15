@@ -77,12 +77,13 @@ class AdminPostController extends Controller
         if (Auth::check()){
             $post = Post::where('id', '=', $id)->first();
             $pencilers = Penciler::all();
-
+            $characters = Character::all();
 
             return view('Admin.edit_post',
                 [
                 'post'=>$post,
                 'pencilers'=>$pencilers,
+                'characters'=>$characters,
             ]);
         }else {
             return redirect('404');
@@ -120,10 +121,11 @@ class AdminPostController extends Controller
                 $post->event = $request->input('event');
                 $post->synopsis = $request->input('synopsis');
                 $post->save();
-/*
-                $post->character()->sync($request->input('character_id'), false);
+
                 $post->character()->getRelated();
-*/
+                $post->character()->sync($request->input('character_id'));
+                $post->character()->getRelated();
+
 
 
                 //Логирование редактирования поста

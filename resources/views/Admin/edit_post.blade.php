@@ -5,7 +5,7 @@
 @section('content')
     <main class="main">
 
-        <h1 class="h1"> Обновить пост</h1>
+        <h1 class="h1"> Обновить данные о выпуске {{$post->series}} #{{$post->issue}}</h1>
 
         @if(Auth::check())
 
@@ -27,16 +27,16 @@
                         <option @if($penciler->id == $post->penciler_id) selected @endif value="{{$penciler->id}}">{{$penciler->name}}</option>
                     @endforeach
                 </select>
-                <!--<h3 class="add-post__h3">Выберите Персонажей</h3>
+                <h3 class="add-post__h3">Выберите Персонажей</h3>
 
-                @-foreach($characters as $character)
+                @foreach($characters as $character)
                     <div class="characters-check">
-                        <input class="characters-check__input" type="checkbox" name="character_id[]" value="{*$character->id}}">
+                        <input class="characters-check__input" type="checkbox" name="character_id[]" value="{{$character->id}}">
                         <label class="characters-check__label">
-                            {*$character->name}}
+                            {{$character->name}}
                         </label>
                     </div>
-                @-кendforeach-->
+                @endforeach
                     <input type="hidden" name="id" value="{{$post->id}}">
                 <div class="add-post__issue-data">
                     <span>Добавить обложку</span>

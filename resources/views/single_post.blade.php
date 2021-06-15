@@ -26,6 +26,11 @@
                     <span class="post__text"><b>Краткий обзор :</b></span> <span class="post__synopsis">{{$post->synopsis}}</span><br>
                 </div>
             </div>
+
+                    <div class="post__views">
+                        <span class="post__views-text">Просмотры :</span>
+                        <span class="post__views-number">{{$post->view}}</span>
+                    </div>
         @if(Auth::check())
             @if(count($comments) == 0)<p>Комментариев пока нет.</p>@endif
             @foreach($comments as $comment)

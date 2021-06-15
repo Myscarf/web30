@@ -13,4 +13,13 @@ class Post extends Model
     public function character(){
         return $this->belongsToMany(Character::class);
     }
+
+    public function get_best_post(){
+
+        return Post::orderBy('view', 'DESC')->limit(3)->get();
+    }
+
+    public function get_random_post(){
+        return Post::inRandomOrder()->limit(1)->get();
+    }
 }

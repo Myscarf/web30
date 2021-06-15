@@ -1,13 +1,183 @@
-// Fonts
-//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import 'bootstrap';
 
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
 
 @import 'reset';
+@import 'vars';
+@import 'fonts';
+@import 'reset';
+@import 'libs';
+@import 'global';
+
+
+.header{
+    height: var(--header-height);
+    width: 100%;
+    //background-color: #eee2ff; //ffb9a6
+    background: linear-gradient(to left, #e66465, #9198e5);
+    display: flex;
+    justify-content: space-around;
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: $header-heigth;
+        width: 100%;
+    }
+    &__logo{
+        color: antiquewhite;
+        display: flex;
+        align-items: center;
+        margin-right: 50px;
+    }
+    &__item{
+        margin: 10px;
+    }
+
+
+    &__link:hover{
+        color:#ddffeb;
+        text-shadow: #ddffeb 1px 0 10px;
+    }
+}
+
+
+.logo{
+    margin: 0 auto;
+    &__img{
+        height: 50px;
+        width: 120px;
+    }
+}
+
+.menu{
+    padding-left: 35px;
+    padding-right: 60px;
+    &__list{
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        color: antiquewhite;
+        display: flex;
+        align-items: center;
+
+    }
+    &__list-item + .menu__list-item{
+        padding-left: 20px;
+    }
+    &__list-item:first-child{
+        padding-left: 200px;
+    }
+
+    &__list-link {
+        color: #fff;
+        text-shadow: 1px 1px 2px black, 0 0 1em red;
+        line-height: 22px;
+        text-decoration: none;
+        font-family: TrainOne-Regular;
+        font-size: 16px;
+    }
+}
+
+.auth{
+    @extend %title-font;
+    padding-left: 100px;
+    padding-right: 100px;
+    &__link{
+        color: #000;
+        font-family: mr_HangingLettersG;
+        font-family: mr_AkronimG;
+        font-size: 26px;
+    }
+}
+
+// end of header
+
+
+.issue{
+
+    &__box{
+        height: calc(100vh - #{$header-heigth});
+        width: 100%;
+        position: relative;
+    }
+    &__box-top{
+        height: 50%;
+        width: 100%;
+    }
+    &__box-bottom{
+        height: 50%;
+        width: 100%;
+        background-color: $issue__title-color;
+    }
+    &__card{
+        position: absolute;
+        left: 30%;
+        top: calc(50% - #{$issue__cover-height/2});
+        height: $issue__cover-height;
+        width: 712px;
+        display: flex;
+
+    }
+    &__cover{
+        height: $issue__cover-height;
+    }
+    &__description{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+        text-align: center;
+        font-family: MateSC-Regular;
+    }
+    &__description-top{
+        height: 50%;
+        color: $issue__title-color;
+        padding-top: 25%;
+        position: relative;
+    }
+    &__title{
+        font-size: 36px;
+        line-height: 40px;
+    }
+    &__volume{
+        font-size: 20px;
+        margin: 20px 0;
+    }
+    &__number{
+        text-align: end;
+        font-size: 36px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    &__description-bottom{
+        height: 50%;
+        color: white;
+        text-align: start;
+        padding-left: 40px;
+    }
+    &__description-text{
+        padding-top: 25%;
+        font-size: 16px;
+        font-family: RussianPunk;
+    }
+    &__read{
+        height: 43px;
+        width: 139px;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        margin: 20px 0;
+    }
+    &__read:hover{
+        background-color: white;
+        color: $issue__title-color;
+        transition: 0.6s;
+    }
+}
+
+
 
 .footer{
     &__content{
@@ -75,7 +245,7 @@
         color: #FFFFF0;
         padding: 6px 12px;
         width: 160px;
-        font-weight: 600px;
+        font-weight: 600;
         cursor: pointer;
     }
 
@@ -90,7 +260,7 @@
     }
     &__social-item,
     &__menu-item{
-        font-weight: 600px;
+        font-weight: 600;
         font-size: 14px;
         margin-bottom: 15px;
     }
@@ -141,6 +311,7 @@
         padding: 42px 10px 41px;
     }
 }
+
 
 .post-comments{
     border: black 1px solid;

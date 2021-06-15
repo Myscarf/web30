@@ -11,7 +11,7 @@ textarea{
 
 
 :root {
-    --header-height: 60px;
+    --header-height: 80px;
     --title-height: 350px;
     --title-width: calc(var(--title-height) /1.537);
   }
@@ -27,7 +27,7 @@ textarea{
     src: url(../fonts/ASM.ttf);
 }
 
-
+/*
 .header{
     height: var(--header-height);
     width: 100%;
@@ -66,7 +66,7 @@ textarea{
     text-shadow: #ddffeb 1px 0 10px;
 }
 
-
+*/
 .my-container{
     display: flex;
     height: auto;
@@ -176,6 +176,16 @@ textarea{
     padding: 20px 10px;
     line-height: 30px;
     background-color: #2099c8;
+}
+
+.aside__random-issue{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post_title--random-issue{
+    margin-right: 0;
 }
 
 .aside__list{
