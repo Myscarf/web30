@@ -5,6 +5,11 @@
 @section('content')
     <main class="main">
 
+        @if (\Session::has('flash'))
+            <p>
+                {{\Session::get('flash')}}
+            </p>
+        @endif
             <div class="post post_auto-height">
                 <img class="post_title" src="../titles/{{$post->series}}/{{$post->cover}}"></img>
                 <div class="post_description">

@@ -29,9 +29,11 @@
                 </select>
                 <h3 class="add-post__h3">Выберите Персонажей</h3>
 
-                @foreach($characters as $character)
+                @foreach ($characters as $character)
+
                     <div class="characters-check">
-                        <input class="characters-check__input" type="checkbox" name="character_id[]" value="{{$character->id}}">
+                    <input class="characters-check__input" type="checkbox" name="character_id[]" value="{{$character->id}}"
+                           @if ($post->character->contains($character)) checked @endif>
                         <label class="characters-check__label">
                             {{$character->name}}
                         </label>

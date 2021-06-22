@@ -6,6 +6,13 @@
     <main class="main">
 
         <h1 class="h1">Редактирование / Удаление постов</h1>
+
+        @if (\Session::has('flash'))
+            <p>
+                {{\Session::get('flash')}}
+            </p>
+        @endif
+
         <a class="post__button" href="{{route('add_post_get')}}">ADD POST</a>
         @if(Auth::check())
             <table class="post-table">

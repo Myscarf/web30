@@ -7,6 +7,7 @@ use App\Penciler;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MongoDB\Driver\Session;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
@@ -66,6 +67,7 @@ class AdminPostController extends Controller
                 $log->pushHandler(new StreamHandler(__DIR__ . '/.../../../Logs/new_posts_log.log', Logger::INFO));
                 $log->info('Пользователь ' . Auth::user()->name . ' добавил описание выпуска ' . $post->series . ' # ' . $post->issue);
 
+                \Session::flash('flash', 'Страница выпуска ' . $post->series . ' #' . $post->issue . ' добавлен');
 
                 return redirect()->route('single_post', $post->id);
             }
@@ -73,7 +75,7 @@ class AdminPostController extends Controller
             return redirect()->route('news');
     }
 
-    public function edit($id){
+    public function edit($id){ // Переход  на страницу редактирования поста
         if (Auth::check()){
             $post = Post::where('id', '=', $id)->first();
             $pencilers = Penciler::all();
@@ -126,7 +128,7 @@ class AdminPostController extends Controller
                 $post->character()->sync($request->input('character_id'));
                 $post->character()->getRelated();
 
-
+                \Session::flash('flash', 'Страница выпуска ' . $post->series . ' #' . $post->issue . ' была обновлена');
 
                 //Логирование редактирования поста
                 $log = new Logger('log_add');

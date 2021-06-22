@@ -84,7 +84,7 @@
                             @foreach($posts->get_random_post() as $post)
                                 <li><a  class="aside__item" href="{{route('single_post', $post->id)}}">
                                         <div class="aside__random-issue">
-                                            <img class="post_title post_title--random-issue" src="../titles/{{$post->series}}/{{$post->cover}}"></img>
+                                            <img class="post_title post_title--random-issue" src="/../titles/{{$post->series}}/{{$post->cover}}"></img>
                                             {{$post->series}} #{{$post->issue}}
                                         </div>
                                     </a>
