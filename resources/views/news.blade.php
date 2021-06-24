@@ -4,6 +4,13 @@
 
 @section('content')
     <main class="main">
+
+        @if (\Session::has('flash'))
+            <p>
+                {{\Session::get('flash')}}
+            </p>
+        @endif
+
         <h1 class="h1">Новости о новых выпусках</h1>
 
         @foreach($posts as $post)
@@ -24,6 +31,7 @@
                 <span class="post__text"><b>Дата выхода :</b></span> <span>{{date('d-m-Y', strtotime($post->released))}}</span><br>
                 <span class="post__text"><b>Краткий обзор :</b></span> <p class="post__synopsis">{{mb_substr($post->synopsis, 0, 400)}}...</p><br>
                 <a href="{{route('single_post', $post->id)}}" class="post__button">Читать далее </a>
+                <a href="{{route('add_to_cart', $post->id)}}" class="post__button">В корзину </a>
             </div>
         </div>
         @endforeach

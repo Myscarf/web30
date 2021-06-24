@@ -56,3 +56,7 @@ Route::get('/404', function (){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Cart action
+
+Route::get('/cart/add_to_cart/{id}', AddToCartAction::class)->name('add_to_cart');

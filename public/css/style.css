@@ -143,6 +143,7 @@ textarea{
     padding: 10px;
     text-decoration: none;
     color: black;
+    margin: 0 10px;
 }
 
 .post__button:hover {
@@ -197,6 +198,7 @@ textarea{
 .aside__item{
     text-decoration: none;
     color: #c01681;
+
 }
 
 .post__characters{
