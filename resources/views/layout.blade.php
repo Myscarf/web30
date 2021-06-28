@@ -52,6 +52,12 @@
             </div>
             @endif
 
+                <div class="aside__inner">
+                    <a class="aside__link" href="{{route('cart')}}">
+                        <div class="aside__header">Корзина</div>
+                    </a>
+                </div>
+
             <div class="aside__inner">
                 <div class="aside__header">Персонажи</div>
                 <div class="aside__body">

@@ -59,4 +59,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Cart action
 
-Route::get('/cart/add_to_cart/{id}', AddToCartAction::class)->name('add_to_cart');
+Route::get('/cart/add_to_cart/{id}', 'CartAction@add')->name('add_to_cart');
+
+Route::get('/cart', 'CartAction@show')->name('cart');
+
+Route::get('/cart/delete/{id}', 'CartAction@delete')->name('delete_from_cart');
+
+Route::post('/cart/update', 'CartAction@update')->name('update_cart');
+
+Route::post('/cart/checkout', OrderController::class)->name('checkout');
+
+Route::get('/cart/checkout', function (){
+    return view('checkout');
+})->name('checkout');
+
+Route::get('/order/{id}', '\\' . \App\Http\Controllers\OrderReceivedController::class)->name('order');
+
+
